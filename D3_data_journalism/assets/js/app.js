@@ -116,12 +116,12 @@ d3.csv("assets/data/data.csv").then(function (data) {
     .attr("x", 0 - (height-15) / 2)
     .attr("dy", "1em")
     .attr("class", "axisText")
-    .text("% Poverty");
+    .text("Age");
   chartGroup
     .append("text")
     .attr("transform", `translate(${width / 2}, ${height + margin.top - 10})`)
     .attr("class", "axisText")
-    .text("Age");
+    .text("Poverty %");
   //   }).catch(function(error) {
   //     console.log(error);
 });
