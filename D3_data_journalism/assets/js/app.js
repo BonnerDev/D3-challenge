@@ -36,7 +36,7 @@ d3.csv("assets/data/data.csv").then(function (data) {
     .range([0, width]);
   var yLinearScale = d3
     .scaleLinear()
-    .domain([26, d3.max(data, (d) => d.age)])
+    .domain([28, d3.max(data, (d) => d.age+2)])
     .range([height, 0]);
 
   // Step 3: Create axis functions
