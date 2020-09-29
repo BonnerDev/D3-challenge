@@ -32,11 +32,11 @@ d3.csv("assets/data/data.csv").then(function(getdata){
   // Step 2: Create scale functions
     // ==============================
     var xLinearScale = d3.scaleLinear()
-      .domain([20, d3.max(getdata, d => d.poverty)])
+      .domain([6, d3.max(getdata, d => d.poverty)])
       .range([0, width]);
 
     var yLinearScale = d3.scaleLinear()
-      .domain([0, d3.max(getdata, d => d.age)])
+      .domain([26, d3.max(getdata, d => d.age)])
       .range([height, 0]);
 
     // Step 3: Create axis functions
@@ -62,21 +62,21 @@ d3.csv("assets/data/data.csv").then(function(getdata){
     .attr("cx", d => xLinearScale(d.poverty))
     .attr("cy", d => yLinearScale(d.age))
     .attr("r", "15")
-    .attr("fill", "pink")
-    .attr("opacity", ".5");
+    .attr("fill", "blue")
+    .attr("opacity", "0.75");
 
     //Step 6: Initialize tool tip
     // ==============================
     var toolTip = d3.tip()
-      .attr("class", "tooltip")
-      .offset([80, -60])
+      .attr("class", "toolTip")
+    //   .offset([80, -60])
       .html(function(d) {
-        return (`${d.state}<br>% Poverty: ${d.poverty}<br>Age: ${d.age}`);
+        return (`${d.abbr}`);
       });
 
     // Step 7: Create tooltip in the chart
     // ==============================
-    chartGroup.call(toolTip);
+    circlesGroup.call(toolTip);
 
     // Step 8: Create event listeners to display and hide the tooltip
     // ==============================
@@ -84,7 +84,7 @@ d3.csv("assets/data/data.csv").then(function(getdata){
       toolTip.show(data, this);
     })
       // onmouseout event
-      .on("mouseout", function(data, index) {
+      .on("mouseout", function(data) {
         toolTip.hide(data);
       });
 
